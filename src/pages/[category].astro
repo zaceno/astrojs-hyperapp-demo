@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 const {category} = Astro.params
 ---
 <Layout fullWidth={true}>
-  <ShoppingCart slot="cart" client:load />
+  <ShoppingCart slot="cart" />
   <CategoryMenu slot="menu" currentCategory={category} />
   <ProductList category={category} />
 </Layout>
