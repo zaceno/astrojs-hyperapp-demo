@@ -1,0 +1,17 @@
+{
+  "name": "astrojs-hyperapp-demo",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@zxlabs/astrojs-hyperapp": "^0.0.2",
+    "astro": "^3.3.0",
+    "nanostores": "^0.9.3"
+  }
+}

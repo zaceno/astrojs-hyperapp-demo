@@ -1,0 +1,53 @@
+---
+import {getProductsForCategory} from '../api.js'
+import ProductCard from './product-card.jsx'
+const {category} = Astro.props
+const products = await getProductsForCategory(category)
+---
+<menu>
+  {products.map((product) => (
+    <li>
+      <ProductCard product={product} client:visible />
+    </li>
+  ))}
+</menu>
+<style>
+menu {
+  justify-content: center;
+  gap: 2rem;
+}
+
+li {
+  flex: 0 0 12rem;
+}
+
+li :global(.product-card) {
+  border: 1px lightgrey solid;
+  padding: 0.5rem;
+  position: relative;
+}
+
+li :global(.product-card__image) {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+li :global(.product-card__title) {
+  margin-top: 0.5em;
+  height: 4.5em;
+  overflow: hidden;
+}
+
+li :global(.product-card__price) {
+  background-color: lightgrey;
+  margin: -0.5rem;
+  padding: 1rem 0.5rem;
+}
+
+li :global(.product-card__add-button) {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+</style>

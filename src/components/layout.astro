@@ -1,0 +1,162 @@
+--- 
+import Header from './header.astro'
+const {fullWidth} = Astro.props
+
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo Astro &amp; Hyperapp </title>
+  </head>
+  <body>
+    <Header>
+      <Fragment slot="cart">
+        <slot name="cart" />
+      </Fragment>
+      <Fragment slot="menu">
+        <slot name="menu" />
+      </Fragment>
+    </Header>
+    <section>
+      <main class={fullWidth ? 'full' : ''}>
+        <slot />
+      </main>
+      </section>
+  </body>
+</html>
+<style>
+  section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  main {
+    flex: 0 0 auto;
+    min-width: 20rem;
+    max-width: 40rem;
+    width: 80%; 
+  }
+  main.full {
+    min-width: none;
+    max-width: none;
+    width: 100%;
+  }
+</style>
+<style is:global>
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: sans-serif;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+img.img--fit {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5 {
+  margin: 1.5em 0;
+}
+
+
+button, .button {
+  display: inline-block;
+  background: #fff;
+  text-decoration: none;
+  color: black;
+  border: 1px black solid;
+  padding: 0 1.5em;
+  line-height: 2.5em;
+  border-radius: 1.3em;
+  position: relative;
+  cursor:pointer;
+}
+button[disabled] {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+button:hover:not([disabled]), .button:hover {
+  background: #eee;
+}
+button:active:not([disabled]), .button:active {
+  background: #ddd;
+  transform: translateY(1px);
+}
+.button--fill {
+  display: block;
+  width: 100%;
+}
+.button--circle {
+  line-height:0;
+  padding:0;
+  width: 2.5em;
+  height: 2.5em;
+  overflow: hidden;
+}
+.button--borderless {
+  border-color: transparent;
+}
+.button--small {
+  padding: 0.1em 0.3em;
+  line-height: 1em;
+  min-width: 1.3em;
+  margin: 0.1em;
+}
+
+menu {
+  list-style-type: none;
+  display: flex;
+  gap: 3rem 1rem;
+  flex-wrap: wrap;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  position: relative;
+}
+
+tr {
+  border-bottom: 1px lightgray solid;
+    
+}
+tr:first-child {
+  border-top: 1px lightgray solid;
+}
+
+
+td, th {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 2.5em;
+  padding: 0.5em;
+}
+
+</style>

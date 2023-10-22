@@ -1,0 +1,41 @@
+ <header class="site-header">
+  <slot name="cart" />
+  <h1 class="store-name"><a href="/">Fake Store</a></h1>
+  <slot name="menu" />
+</header>
+<style>
+
+:root {  --header-height: calc(8rem + 2px); }
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: 50;
+  background-color: #fff;
+  border-bottom: 1px lightgray solid;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+header :global(.cart-status) {
+  float: right;
+  margin-top: 1rem;
+}  
+
+header + :global(*) {
+  padding-top: calc(var(--header-height) + 2rem);
+}
+
+</style>

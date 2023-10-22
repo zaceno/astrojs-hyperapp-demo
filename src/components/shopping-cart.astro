@@ -1,0 +1,47 @@
+---
+import CartPanel from './cart-panel.jsx'
+import CartStatus from './cart-status.jsx'
+---
+<CartPanel client:idle />
+<CartStatus client:load />
+<style is:global>
+#cart-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 27rem;
+  padding: 1rem;
+  border-left: 1px black solid;
+  box-shadow: 0 0 10px #000000ee;
+  background: #fff;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transition: 0.4s;
+  gap: 1rem;
+}
+
+#cart-panel:not(.cart-panel--visible) {
+  transform: translateX(calc(100% + 10px));
+}
+#cart-panel.cart-panel--visible {
+  transform: translateX(0);
+}
+#cart-panel header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#cart-panel header h1 {
+  flex: 1 1 auto;
+  margin: 2rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+#cart-panel section {
+  flex: 1 1 auto;
+  overflow: scroll;
+}
+</style>

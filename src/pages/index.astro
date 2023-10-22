@@ -1,0 +1,30 @@
+---
+import ShoppingCart from '../components/shopping-cart.astro'    
+import Layout from '../components/layout.astro'
+import {getCategories} from '../api.js'
+const categories = await getCategories()
+---
+<Layout>
+	<ShoppingCart slot="cart" />
+			
+	<p class="welcome-text">
+		Welcome to our wonderous emporium of curiosities!	
+		Imagine buying knicknacks and doodads to astound and delight!
+		Now you too can feel the thrill of shopping - without spending
+		your hard earned cash, or even receiving any items.
+	</p>
+	
+	<menu class="categories">
+	{categories.map(cat => <li>
+			<a class="button" href={"/" + cat}>{cat} → </a>
+		</li> )}
+	</menu>
+
+
+</Layout>
+<style>
+.categories {
+	justify-content: center;
+	gap: 1rem;
+}
+</style>

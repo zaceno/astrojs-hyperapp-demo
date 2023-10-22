@@ -1,0 +1,18 @@
+---
+import Layout from '../components/layout.astro'
+import ShoppingCart from '../components/shopping-cart.astro'    
+import CategoryMenu from '../components/category-menu.astro'
+import ProductList from '../components/product-list.astro';
+import {getCategories } from '../api';
+
+export async function getStaticPaths() {
+  return (await getCategories()).map((category:string) => ({params: {category}}))
+}
+
+const {category} = Astro.params
+---
+<Layout fullWidth={true}>
+  <ShoppingCart slot="cart" client:load />
+  <CategoryMenu slot="menu" currentCategory={category} />
+  <ProductList category={category} />
+</Layout>

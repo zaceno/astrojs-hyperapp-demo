@@ -1,0 +1,31 @@
+---
+import { getCategories } from "../api";
+const categories = await getCategories()
+const {currentCategory} = Astro.props
+---
+<nav>
+  <menu>
+    {categories.map((category:string) => (
+      <li class={(currentCategory===category?"current" : "")}>
+        <a href={"/" + category}>
+          {category}
+        </a>
+      </li>
+    ))}
+  </menu>
+</nav>
+<style>
+  menu {gap: 0.5em;}
+  a {
+    background: #fff;
+    display:block;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: black;
+    padding: 0.3em 0.8em;
+  }  
+  .current a {
+    border-bottom: 3px black solid;
+    padding-bottom: calc(0.3em - 3px);
+  }
+</style>
