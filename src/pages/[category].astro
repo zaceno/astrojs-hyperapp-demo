@@ -1,8 +1,8 @@
 ---
-import Layout from '../components/layout.astro'
-import ShoppingCart from '../components/shopping-cart.astro'    
-import CategoryMenu from '../components/category-menu.astro'
-import ProductList from '../components/product-list.astro';
+import Layout from '../server-components/layout.astro'
+import ShoppingCart from '../server-components/shopping-cart.astro'    
+import CategoryMenu from '../server-components/category-menu.astro'
+import ProductList from '../server-components/product-list.astro';
 import {getCategories } from './api/categories';
 
 export async function getStaticPaths() {

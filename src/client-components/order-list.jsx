@@ -1,7 +1,16 @@
-import { shoppingIsland, totalCost } from "../shopping"
+import island from "./island"
+
+const totalCost = state =>
+  Math.round(
+    100 *
+      state.items.reduce(
+        (total, item) => total + item.count * item.product.price,
+        0,
+      ),
+  ) / 100
 
 export default () =>
-  shoppingIsland(state => (
+  island(state => (
     <table class="order-list">
       <thead>
         <tr>

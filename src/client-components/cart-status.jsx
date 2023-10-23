@@ -1,7 +1,11 @@
-import { shoppingIsland, itemCount, RevealCart } from "../shopping"
+import island from "./island"
+const RevealCart = state => ({ ...state, showing: true })
+
+const itemCount = state =>
+  state.items.reduce((total, item) => total + item.count, 0)
 
 export default props =>
-  shoppingIsland(state => {
+  island(state => {
     const n = itemCount(state)
     return (
       <button

@@ -1,6 +1,9 @@
-import { shoppingIsland, ClearCart } from "../shopping"
+import island from "./island"
+
+const ClearCart = state => ({ ...state, items: [], showing: false })
+
 export default () =>
-  shoppingIsland(state => (
+  island(state => (
     <button
       type="button"
       class="button--fill"

@@ -1,6 +1,6 @@
 ---
-import ShoppingCart from '../components/shopping-cart.astro'    
-import Layout from '../components/layout.astro'
+import ShoppingCart from '../server-components/shopping-cart.astro'    
+import Layout from '../server-components/layout.astro'
 import {getCategories} from './api/categories'
 const categories = await getCategories()
 ---

@@ -1,9 +1,20 @@
-import {
-  shoppingIsland,
-  AddToCart,
-  RemoveFromCart,
-  HideCart,
-} from "../shopping"
+import island from "./island"
+
+const AddOne = (state, id) => ({
+  ...state,
+  items: state.items.map(item =>
+    item.id !== id ? item : { ...item, count: item.count + 1 },
+  ),
+})
+
+const RemoveOne = (state, id) => {
+  const items = state.items
+    .map(item => (item.id !== id ? item : { ...item, count: item.count - 1 }))
+    .filter(item => item.count > 0)
+  return { ...state, items, showing: !!items.length }
+}
+
+const HideCart = state => ({ ...state, showing: false })
 
 const BeginCheckout = state => [
   HideCart(state),
@@ -16,7 +27,7 @@ const BeginCheckout = state => [
 ]
 
 export default () =>
-  shoppingIsland(state => (
+  island(state => (
     <div id="cart-panel" class={{ "cart-panel--visible": state.showing }}>
       <header>
         <h1>Shopping cart</h1>
@@ -37,16 +48,10 @@ export default () =>
                   {"⤬ " + item.count}
                 </td>
                 <td style={{ width: "5em" }}>
-                  <button
-                    class="button--small"
-                    onclick={[AddToCart, item.product]}
-                  >
+                  <button class="button--small" onclick={[AddOne, item.id]}>
                     +
                   </button>
-                  <button
-                    class="button--small"
-                    onclick={[RemoveFromCart, item.product]}
-                  >
+                  <button class="button--small" onclick={[RemoveOne, item.id]}>
                     -
                   </button>
                 </td>
