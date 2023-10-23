@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@zxlabs/astrojs-hyperapp": "^0.0.2",
+    "@zxlabs/hyperapp-extra": "^1.1.0",
     "astro": "^3.3.0",
     "nanostores": "^0.9.3"
   }

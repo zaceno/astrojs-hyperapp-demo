@@ -1,5 +1,5 @@
-import syncIslands from "./lib/synced-islands"
-import localStorageIO from "./lib/localstorage"
+import syncIslands from "@zxlabs/hyperapp-extra/islands"
+import localStorageIO from "@zxlabs/hyperapp-extra/localstorage"
 import { app } from "hyperapp"
 
 export const AddToCart = (state, product) => {
