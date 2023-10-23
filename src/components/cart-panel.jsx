@@ -30,7 +30,10 @@ export default () =>
             {state.items.map(item => (
               <tr>
                 <td style={{ width: "4em" }}>
-                  <img src={item.product.image} class="img--fit" />
+                  <img
+                    src={"/imageproxy?&i=" + item.product.image}
+                    class="img--fit"
+                  />
                 </td>
                 <td>{item.product.title}</td>
                 <td style={{ textAlign: "right", width: "3em" }}>

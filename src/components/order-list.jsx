@@ -17,7 +17,7 @@ export default () =>
             <td>
               <img
                 class="img--fit"
-                src={item.product.image}
+                src={"/imageproxy?&i=" + item.product.image}
                 alt={item.product.title}
               />
             </td>
