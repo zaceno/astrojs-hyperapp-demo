@@ -1,5 +1,5 @@
 ---
-import {getProductsForCategory} from '../api.js'
+import {getProductsForCategory} from '../pages/api/products'
 import ProductCard from './product-card.jsx'
 const {category} = Astro.props
 const products = await getProductsForCategory(category)
