@@ -57,6 +57,7 @@ export const RemoveOne = (state, id) => {
 // cart, for a given id. Item must be in the cart
 // for this to work.
 export const AddOne = (state, id) => ({
+  ...state,
   items: state.items.map(item =>
     item.id !== id ? item : { ...item, count: item.count + 1 },
   ),
