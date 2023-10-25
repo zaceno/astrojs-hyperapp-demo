@@ -1,16 +1,7 @@
-import island from "./island"
-
-const totalCost = state =>
-  Math.round(
-    100 *
-      state.items.reduce(
-        (total, item) => total + item.count * item.product.price,
-        0,
-      ),
-  ) / 100
+import { cartIsland, calcTotalCost } from "./cart"
 
 export default () =>
-  island(state => (
+  cartIsland(state => (
     <table class="order-list">
       <thead>
         <tr>
@@ -41,7 +32,7 @@ export default () =>
           <th style={{ textAlign: "right" }} colspan="2">
             Total:
           </th>
-          <td style={{ textAlign: "right" }}>${totalCost(state)}</td>
+          <td style={{ textAlign: "right" }}>${calcTotalCost(state)}</td>
           <td></td>
         </tr>
       </tfoot>

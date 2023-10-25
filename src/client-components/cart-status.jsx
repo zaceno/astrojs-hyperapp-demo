@@ -1,17 +1,12 @@
-import island from "./island"
-const RevealCart = state => ({ ...state, showing: true })
-
-const itemCount = state =>
-  state.items.reduce((total, item) => total + item.count, 0)
-
+import { cartIsland, calcNumberOfItems, Show } from "./cart"
 export default props =>
-  island(state => {
-    const n = itemCount(state)
+  cartIsland(state => {
+    const n = calcNumberOfItems(state)
     return (
       <button
         class={[props.className, "cart-status"]}
         disabled={!n}
-        onclick={RevealCart}
+        onclick={Show}
       >
         🛒
         {n > 0 ? n : ""}

@@ -10,10 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^6.0.3",
-    "@zxlabs/astrojs-hyperapp": "^0.0.2",
-    "@zxlabs/hyperapp-extra": "^1.1.0",
-    "astro": "^3.3.0",
-    "nanostores": "^0.9.3"
+    "@zxlabs/astrojs-hyperapp": "^1.0.0",
+    "astro": "^3.3.0"
   }
 }

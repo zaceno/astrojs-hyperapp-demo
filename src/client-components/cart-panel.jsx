@@ -1,37 +1,10 @@
-import island from "./island"
-
-const AddOne = (state, id) => ({
-  ...state,
-  items: state.items.map(item =>
-    item.id !== id ? item : { ...item, count: item.count + 1 },
-  ),
-})
-
-const RemoveOne = (state, id) => {
-  const items = state.items
-    .map(item => (item.id !== id ? item : { ...item, count: item.count - 1 }))
-    .filter(item => item.count > 0)
-  return { ...state, items, showing: !!items.length }
-}
-
-const HideCart = state => ({ ...state, showing: false })
-
-const BeginCheckout = state => [
-  HideCart(state),
-  () =>
-    queueMicrotask(() =>
-      requestAnimationFrame(() => {
-        window.location.href = "/checkout"
-      }),
-    ),
-]
-
+import { cartIsland, Hide, AddOne, RemoveOne, Checkout } from "./cart"
 export default () =>
-  island(state => (
+  cartIsland(state => (
     <div id="cart-panel" class={{ "cart-panel--visible": state.showing }}>
       <header>
         <h1>Shopping cart</h1>
-        <button class="button--borderless button--circle" onclick={HideCart}>
+        <button class="button--borderless button--circle" onclick={Hide}>
           ╳
         </button>
       </header>
@@ -61,7 +34,7 @@ export default () =>
         </table>
       </section>
       <footer>
-        <button onclick={BeginCheckout} class="button--fill" type="submit">
+        <button onclick={Checkout} class="button--fill" type="submit">
           To Checkout →
         </button>
       </footer>

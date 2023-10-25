@@ -1,18 +1,7 @@
-import island from "./island"
-
-const AddToCart = (state, product) => {
-  let items = [...state.items]
-  let index = state.items.findIndex(item => item.id === product.id)
-  if (index < 0) {
-    items.push({ id: product.id, product, count: 1 })
-  } else {
-    items[index] = { ...items[index], count: items[index].count + 1 }
-  }
-  return { ...state, items }
-}
+import { cartIsland, AddProduct } from "./cart"
 
 export default ({ product }) =>
-  island(_ => (
+  cartIsland(_ => (
     <div class="product-card">
       <div class="product-card__image">
         <img class="img--fit" src={product.image} alt={product.title} />
@@ -23,7 +12,7 @@ export default ({ product }) =>
       </p>
       <button
         class="product-card__add-button button--circle"
-        onclick={[AddToCart, product]}
+        onclick={[AddProduct, product]}
       >
         +
       </button>

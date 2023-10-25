@@ -1,20 +1,8 @@
-import island from "./island"
-
-const ClearCart = state => ({ ...state, items: [], showing: false })
+import { cartIsland, Confirm } from "./cart"
 
 export default () =>
-  island(state => (
-    <button
-      type="button"
-      class="button--fill"
-      onclick={state => [
-        state,
-        d => d(ClearCart),
-        () => {
-          window.location.href = "/confirmation"
-        },
-      ]}
-    >
+  cartIsland(_ => (
+    <button type="button" class="button--fill" onclick={Confirm}>
       Confirm order
     </button>
   ))
