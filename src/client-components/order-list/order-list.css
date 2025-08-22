@@ -1,0 +1,17 @@
+table.order-list {
+  & .w2 {
+    width: 2rem;
+  }
+  & .w4 {
+    width: 4rem;
+  }
+  & .w6 {
+    width: 6rem;
+  }
+  & .tl {
+    text-align: left;
+  }
+  & .tr {
+    text-align: right;
+  }
+}

@@ -1,0 +1,49 @@
+---
+import AddToCartButton from '@/client-components/add-to-cart-button'
+import {type Product} from '@/data/products'
+export type Props = {
+  product: Product
+}
+const {product} = Astro.props
+---
+<div class="product-card">
+  <div class="product-card__image">
+    <img class="img--fit" src={product.image} alt={product.title} />
+  </div>
+  <p class="product-card__title">{product.title}</p>
+  <p class="product-card__price">
+    <b>${product.price}</b>
+  </p>
+  <AddToCartButton client:visible product={product} class="product-card__add-button" />
+</div>
+<style>
+  .product-card {
+    border: 1px lightgrey solid;
+    padding: 0.5rem;
+    position: relative;
+  }
+  
+  .product-card__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .product-card__title {
+    margin-top: 0.5em;
+    height: 4.5em;
+    overflow: hidden;
+  }
+  
+  .product-card__price {
+    background-color: lightgrey;
+    margin: -0.5rem;
+    padding: 1rem 0.5rem;
+  }
+  
+  :global(.product-card__add-button) {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+
+</style>

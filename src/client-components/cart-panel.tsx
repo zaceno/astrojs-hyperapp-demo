@@ -1,12 +1,15 @@
-import { cartIsland, Hide, AddOne, RemoveOne, Checkout } from "./cart"
+import { Button } from "./button/button"
+import cartSynchronizer from "./cart/synchronizer"
+import { Hide, AddOne, RemoveOne, Checkout } from "./cart/logic"
+
 export default () =>
-  cartIsland(state => (
+  cartSynchronizer(state => (
     <div id="cart-panel" class={{ "cart-panel--visible": state.showing }}>
       <header>
         <h1>Shopping cart</h1>
-        <button class="button--borderless button--circle" onclick={Hide}>
+        <Button style="borderless-circle" onclick={Hide}>
           ╳
-        </button>
+        </Button>
       </header>
       <section>
         <table>
@@ -21,12 +24,12 @@ export default () =>
                   {"⤬ " + item.count}
                 </td>
                 <td style={{ width: "5em" }}>
-                  <button class="button--small" onclick={[AddOne, item.id]}>
+                  <Button style="tiny" onclick={[AddOne, item.id]}>
                     +
-                  </button>
-                  <button class="button--small" onclick={[RemoveOne, item.id]}>
+                  </Button>
+                  <Button style="tiny" onclick={[RemoveOne, item.id]}>
                     -
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -34,9 +37,9 @@ export default () =>
         </table>
       </section>
       <footer>
-        <button onclick={Checkout} class="button--fill" type="submit">
+        <Button onclick={Checkout} style="wide" type="submit">
           To Checkout →
-        </button>
+        </Button>
       </footer>
     </div>
   ))

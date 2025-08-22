@@ -1,27 +1,28 @@
 ---
-import ShoppingCart from '../server-components/shopping-cart.astro'    
-import Layout from '../server-components/layout.astro'
-import {getCategories} from './api/categories'
-const categories = await getCategories()
+import '@/client-components/button/button.css'
+import Layout from '@/server-components/layout.astro'
+import ShoppingCart from '@/server-components/shopping-cart.astro'    
+import {getCategories} from '@/data/products'
+const categories = await getCategories() as string[]
 ---
 <Layout>
+
 	<ShoppingCart slot="cart" />
+
 	<p class="welcome-text">
-		Welcome to our wonderful emporium of curiosities!	
-		Imagine buying knicknacks and doodads to astound and delight!
-		Now you too can feel the thrill of shopping - without spending
-		your hard earned cash, or even receiving any items.
+	<b>Step right up!</b> Welcome to our <i>Grand Emporium</i> of <span style="font-family: cursive">wonders</span> and <span style="font-family:monospace">curiosities</span>! Browse trinkets, treasures, and doodads galore! <b>Fill your cart!</b> All the <i>thrill of shopping</i> without the hassle of recieving items, for the low, low price of <b>nothing!</b> It’s commerce as spectacle, retail as play, and your ticket to pure <span style="font-family: cursive">make-believe delight</span>.
 	</p>
 	
-	
 	<menu class="categories">
-	{categories.map(cat => <li>
-			<a class="button" href={"/" + cat}>{cat} → </a>
-		</li> )}
+	{categories.map(category => (
+		<li>
+			<a class="button" href={"/" + category}>{category} → </a>
+		</li>
+	))}
 	</menu>
 
-
 </Layout>
+
 <style>
 .categories {
 	justify-content: center;

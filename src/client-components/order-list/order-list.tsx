@@ -1,14 +1,16 @@
-import { cartIsland, calcTotalCost } from "./cart"
+import "./order-list.css"
+import cartSynchronizer from "@/client-components/cart/synchronizer"
+import { calcTotalCost } from "@/client-components/cart/logic"
 
 export default () =>
-  cartIsland(state => (
+  cartSynchronizer(state => (
     <table class="order-list">
       <thead>
         <tr>
-          <th style={{ width: "2rem" }}></th>
-          <th style={{ textAlign: "left" }}>Item</th>
-          <th style={{ width: "6rem" }}>Unit price</th>
-          <th style={{ width: "4rem" }}></th>
+          <th class="w2"></th>
+          <th class="tl">Item</th>
+          <th class="w6">Unit price</th>
+          <th class="w4"></th>
         </tr>
       </thead>
       <tbody>
@@ -22,17 +24,17 @@ export default () =>
               />
             </td>
             <td>{item.product.title}</td>
-            <td style={{ textAlign: "right" }}>${item.product.price}</td>
+            <td class="tr">${item.product.price}</td>
             <td>⤬{item.count}</td>
           </tr>
         ))}
       </tbody>
       <tfoot>
         <tr>
-          <th style={{ textAlign: "right" }} colspan="2">
+          <th class="tr" colspan="2">
             Total:
           </th>
-          <td style={{ textAlign: "right" }}>${calcTotalCost(state)}</td>
+          <td class="tr">${calcTotalCost(state)}</td>
           <td></td>
         </tr>
       </tfoot>

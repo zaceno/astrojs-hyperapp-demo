@@ -1,5 +1,5 @@
 ---
-import { getCategories } from "../pages/api/categories";
+import { getCategories } from "@/data/products";
 const categories = await getCategories()
 const {currentCategory} = Astro.props
 ---

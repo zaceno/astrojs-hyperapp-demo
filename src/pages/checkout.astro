@@ -1,7 +1,7 @@
 ---
-import Layout from '../server-components/layout.astro'
-import OrderList from '../client-components/order-list.jsx'
-import CheckoutButton from '../client-components/checkout-button.jsx'
+import Layout from '@/server-components/layout.astro'
+import OrderList from '@/client-components/order-list/order-list'
+import CheckoutButton from '@/client-components/checkout-button'
 ---
 <Layout>
     <h2>Check  out:</h2>
@@ -12,6 +12,7 @@ import CheckoutButton from '../client-components/checkout-button.jsx'
     </p>
     
     <OrderList client:load />
+    
     <p>   
       <CheckoutButton client:load  />
     </p>

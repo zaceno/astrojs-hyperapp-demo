@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@zxlabs/astrojs-hyperapp": "^1.0.0",
-    "astro": "^3.3.0"
+    "astro": "^5.13.2",
+    "astrojs-hyperapp": "^3.0.6",
+    "hyperapp": "^2.0.22"
   }
 }

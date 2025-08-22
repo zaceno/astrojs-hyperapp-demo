@@ -1,3 +1,14 @@
 {
-  "extends": "astro/tsconfigs/base"
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "jsxRuntime": "classic",
+    "jsxFactory": "jsx",
+    "jsxFragmentFactory": "jsxFragment",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
 }
